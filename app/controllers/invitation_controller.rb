@@ -1,9 +1,16 @@
-class InvatationController < ApplicationController
+class InvitationController < ApplicationController
   def index
+    @country_codes = {"El Salvador" => "+503", "Estados Unidos" => "+1", "Panama" => "+507", "Australia" => "+61", "Guatemala" => "+502"}
   end
 
   def find_guest
-    @guest = Guest.where(phone_number: params[:phone_number]).includes(:co_guests)
+    phone_number = "#{params[:country_code]}#{params[:number]}"
+    @guest = Guest.where(phone_number: phone_number).includes(:co_guests).first
+    if @guest
+      render "show"
+    else
+      render "not_found"
+    end
   end
 
   def rsvp
@@ -29,6 +36,6 @@ class InvatationController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def guest_params
-      params.fetch(:guest, {:name, :lastname, :email, :confirmed})
+      params.require(:guest).permit(:name, :lastname, :email, :confirmed)
     end
 end
