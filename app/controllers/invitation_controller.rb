@@ -7,9 +7,9 @@ class InvitationController < ApplicationController
     phone_number = "#{params[:country_code]}#{params[:number]}"
     @guest = Guest.where(phone_number: phone_number).includes(:co_guests).first
     if @guest
-      render "show"
+      render :show
     else
-      render "not_found"
+      render :not_found, status: :not_found
     end
   end
 
