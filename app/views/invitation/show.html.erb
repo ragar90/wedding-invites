@@ -1,0 +1,7 @@
+<%=turbo_frame_tag "invitation" do %>
+    <h1><%=@guest.name.titleize%> <%=@guest.lastname.titleize%></h1>
+    <%@guest.co_guests.each do |coguest|%>
+        <h1><%=coguest.name.titleize%> <%=coguest.lastname.titleize%></h1>
+    <%end%>
+    <p>Estas invitado a nuestra boda a celebrarse este 13 de Agosto a celbrarse en la parroquia "La Sagrada Familia"<br/>y posteriomente a una pequeña recepcion en el hotel Las Margaritas ubicado en la colonia San Francisco</p>
+<%end%>

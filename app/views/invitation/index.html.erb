@@ -1,14 +1,16 @@
-<h1>Gracias por compartir este bello momento con nosotos</h1>
-<h2>Selecciona tu pais e ingresa tu numero para empezar</h2>
+<%=turbo_frame_tag "invitation" do %>
+    <h1>Gracias por compartir este bello momento con nosotos</h1>
+    <h2>Selecciona tu pais e ingresa tu numero para empezar</h2>
 
-<%=form_tag find_guest_path do %>
-    <div>
-        <%=label_tag :country_code%>
-        <%= select_tag :country_code, options_for_select(@country_codes) %>
-    </div>
-    <div>
-        <%= label_tag :number %>
-        <%= text_field_tag :number %>
-    </div>
-    <%=submit_tag "Buscar"%>
+    <%=form_tag find_guest_path do %>
+        <div>
+            <%=label_tag :country_code%>
+            <%= select_tag :country_code, options_for_select(@country_codes) %>
+        </div>
+        <div>
+            <%= label_tag :number %>
+            <%= text_field_tag :number %>
+        </div>
+        <%=submit_tag "Buscar"%>
+    <%end%>
 <%end%>
