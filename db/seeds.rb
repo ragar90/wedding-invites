@@ -11,26 +11,22 @@ country_codes = {"El Salvador" => "+503", "Estados Unidos" => "+1", "Panama" => 
     g = Guest.create(
         name: "Guest",
         lastname: " #{i}",
-        phone_number: "#{country_codes.to_a.sample[1]}#{numbers.sample(10).join}" ,
-        confirmed: false
+        phone_number: "#{country_codes.to_a.sample[1]}#{numbers.sample(10).join}" 
     )
     if(i % 3 == 0)
         Guest.create(
             name: "Guest",
             lastname: " #{i}-1",
-            confirmed: false,
             parent_guest_id: g.id
         )
         Guest.create(
             name: "Guest",
             lastname: " #{i}-2",
-            confirmed: false,
             parent_guest_id: g.id
         )
         Guest.create(
             name: "Guest",
             lastname: " #{i}-3",
-            confirmed: false,
             parent_guest_id: g.id
         )
     end
